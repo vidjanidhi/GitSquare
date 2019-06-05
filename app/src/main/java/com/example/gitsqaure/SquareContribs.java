@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 import static com.example.gitsqaure.API.RetrofitClient.getAPIService;
 
-public class SquareContribs extends AppCompatActivity {
+public class SquareContribs extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.rv)
     RecyclerView recyclerView;
@@ -56,6 +56,7 @@ public class SquareContribs extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         getData();
+        swipeLayout.setOnRefreshListener(this);
     }
 
     private void getData() {
@@ -105,4 +106,18 @@ public class SquareContribs extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onRefresh() {
+        if (GlobalElements.isConnectingToInternet(this)) {
+            data.clear();
+            mAdapter.notifyDataSetChanged();
+            getData();
+            swipeLayout.setRefreshing(true);
+        } else {
+            swipeLayout.setRefreshing(false);
+            Toast.makeText(this, "No Network Present!!", Toast.LENGTH_SHORT).show();
+        }
+
+        swipeLayout.setRefreshing(false);
+    }
 }
