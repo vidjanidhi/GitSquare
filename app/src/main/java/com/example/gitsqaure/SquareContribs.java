@@ -18,6 +18,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,6 +59,19 @@ public class SquareContribs extends AppCompatActivity implements SwipeRefreshLay
 
         getData();
         swipeLayout.setOnRefreshListener(this);
+        btnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(data, new Comparator<User>() {
+                    @Override
+                    public int compare(User lhs, User rhs) {
+
+                        return lhs.getContributions() - rhs.getContributions();
+                    }
+                });
+                mAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void getData() {
