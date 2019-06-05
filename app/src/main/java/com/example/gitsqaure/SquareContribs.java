@@ -108,6 +108,7 @@ public class SquareContribs extends AppCompatActivity implements SwipeRefreshLay
 
     @Override
     public void onRefresh() {
+
         if (GlobalElements.isConnectingToInternet(this)) {
             data.clear();
             mAdapter.notifyDataSetChanged();
