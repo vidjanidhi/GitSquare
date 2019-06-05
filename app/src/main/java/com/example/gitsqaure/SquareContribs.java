@@ -59,6 +59,7 @@ public class SquareContribs extends AppCompatActivity  {
         getData();
 
 
+
     }
 
     private void getData() {
@@ -104,7 +105,7 @@ public class SquareContribs extends AppCompatActivity  {
             });
         } else {
             progressbar.setVisibility(View.GONE);
-            Toast.makeText(this, "No Network Present!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Network Present", Toast.LENGTH_SHORT).show();
         }
     }
 
