@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 import static com.example.gitsqaure.API.RetrofitClient.getAPIService;
 
-public class SquareContribs extends AppCompatActivity  {
+public class SquareContribs extends AppCompatActivity {
 
     @BindView(R.id.rv)
     RecyclerView recyclerView;
@@ -50,16 +50,12 @@ public class SquareContribs extends AppCompatActivity  {
         setContentView(R.layout.square_contribs);
         ButterKnife.bind(this);
 
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         mAdapter = new UserAdapter(this, data);
         recyclerView.setAdapter(mAdapter);
 
         getData();
-
-
-
     }
 
     private void getData() {
